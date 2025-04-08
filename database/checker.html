@@ -1,0 +1,30 @@
+// URL of the text file
+const url = 'https://xdby-domains.github.io/register/database/storage.txt'; 
+
+// Function to search for "banana" in the text file
+async function searchForBanana() {
+  try {
+    // Fetch the contents of the text file
+    const response = await fetch(url);
+    
+    // Check if the response is OK (status 200)
+    if (!response.ok) {
+      throw new Error('Failed to fetch the file');
+    }
+    
+    // Get the text content of the file
+    const text = await response.text();
+    
+    // Check if the word "banana" is in the text
+    if (text.includes('banana')) {
+      console.log('The word "banana" was found in the file!');
+    } else {
+      console.log('The word "banana" was not found in the file.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+// Call the function
+searchForBanana();
